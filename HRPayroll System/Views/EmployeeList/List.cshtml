@@ -1,0 +1,77 @@
+﻿@model List<HRPayroll_System.Models.EmployeeModel>
+
+
+
+
+<h1> Regular Employee List </h1>  <br /> 
+
+
+<input class="btn btn-primary" type="button" value="Create Employee" onclick="@("window.location.href='" + @Url.Action("Add", "EmployeeList") + "'");" />
+
+    @if(Model != null)
+
+    {
+        <table class="table">
+
+            <thread>
+
+                 <tr>
+
+                    <th> ID </th>
+                    <th> FullName </th>
+                    <th> Birthday </th>
+                    <th> Employee Type </th>
+                    <th> TIN Number </th>
+                    <th> Standard Salary </th>
+                    <th> Absences </th>
+                    <th> Tax Rate % </th>
+                    <th> Overall Total</th>
+                   <th> Actions </th>
+
+
+                </tr>
+
+            </thread>
+
+            <tbody>
+
+            @foreach(var List in Model)
+            {
+                
+                @if(List.EmployeeType == "Regular")
+                {
+                    
+                    <tr>
+                        <td> @List.Id </td>
+                        <td> @List.Fullname </td>
+                        <td> @List.Birthday </td>
+                        <td> @List.EmployeeType </td>
+                        <td> @List.TIN </td>
+                        <td> @List.StandardSalary</td>
+                        <td> @List.Absences </td>
+                        <td> @List.TaxRate </td>
+                        <td> @List.OverallTotal </td>
+                        <td> <a href="Edit/@List.Id"> Edit </a> </td>
+                        <td> <a href="Delete"> Delete </a> </td>
+                       
+                        <td> <a href="Calculator/@List.Id"> <button class="btn btn-info"> Calculate </button> </a> </td>   
+                        
+                    </tr>
+                }
+            }
+
+            </tbody>
+
+        </table>
+
+    }else
+    {
+        //Display none
+    }
+
+
+<input class="btn btn-info" type="button" value=" Contractual > " onclick="@("window.location.href='" + @Url.Action("CEmployees", "EmployeeList") + "'");" />
+
+
+
+

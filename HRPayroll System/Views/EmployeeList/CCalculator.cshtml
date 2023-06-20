@@ -1,0 +1,60 @@
+﻿@model HRPayroll_System.Models.RegularModel
+
+@{
+}
+
+<h1> Contractual Calculator </h1>
+
+
+
+<form class="row g-3" method="post" action="CCalculator">
+
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-2 col-form-label"> ID </label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" asp-for="Id" readonly>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-2 col-form-label"> FullName: </label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" placeholder="FullName" asp-for="Fullname" readonly>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-2 col-form-label"> TIN: </label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" asp-for="TIN" readonly>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-4 col-form-label"> Employee Type: </label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" asp-for="EmployeeType" readonly>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-3 col-form-label"> Work Days: </label>
+        <input class="form-control" type="number" asp-for="days" readonly />
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-4 col-form-label"> Enter Days: </label>
+        <input class="form-control" type="number" min="0" name="Slots" />
+    </div>
+
+
+
+
+
+    <button class="btn btn-info" value="Calculate" name="Total"> Calculate </button> <!-- Clicke once and change database values-->
+
+</form>
+<br />
+<br />
+
+<input class="btn btn-primary" type="button" value="< Back" onclick="@("window.location.href='" + @Url.Action("CEmployees", "EmployeeList") + "'");" />
