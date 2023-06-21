@@ -1,4 +1,4 @@
-﻿@model HRPayroll_System.Models.RegularModel
+﻿@model HRPayroll_System.Models.CCalculatorModel
 
 @{
 }
@@ -32,29 +32,58 @@
 
     <div class="col-md-4">
         <label for="inputEmail3" class="col-sm-4 col-form-label"> Employee Type: </label>
-        <div class="col-sm-10">
-            <input class="form-control" type="text" asp-for="EmployeeType" readonly>
-        </div>
+        <input class="form-control" type="text" asp-for="EmployeeType" readonly />
     </div>
 
     <div class="col-md-4">
-        <label for="inputEmail3" class="col-sm-3 col-form-label"> Work Days: </label>
-        <input class="form-control" type="number" asp-for="days" readonly />
+        <label for="inputEmail3" class="col-sm-4 col-form-label"> Employee Type: </label>
+        <input class="form-control" type="number" asp-for="EmployeeType" readonly />
     </div>
 
     <div class="col-md-4">
-        <label for="inputEmail3" class="col-sm-4 col-form-label"> Enter Days: </label>
-        <input class="form-control" type="number" min="0" name="Slots" />
+        <label for="inputEmail3" class="col-sm-4 col-form-label"> Over all Salary: </label>
+        <input id="absent" class="form-control" type="text" asp-for="OverallTotal" readonly/>
+
     </div>
 
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-4 col-form-label"> No. of Days: </label>
+        <input id="Absent" class="form-control" type="number" step="0.5" max="15.5" min="0" asp-for="Ndays">
 
+    </div>
 
+    <button id="on" class="btn btn-info" onclick="ans()"> Calculate </button>
 
+    <button class="btn btn-info" id="sv">Save</button>
 
-    <button class="btn btn-info" value="Calculate" name="Total"> Calculate </button> <!-- Clicke once and change database values-->
 
 </form>
 <br />
 <br />
 
-<input class="btn btn-primary" type="button" value="< Back" onclick="@("window.location.href='" + @Url.Action("CEmployees", "EmployeeList") + "'");" />
+
+    <input class="btn btn-info" type="button" value="< Back" onclick="@("window.location.href='" + @Url.Action("CEmployees", "EmployeeList") + "'");" />
+
+
+
+<script>
+
+    var save = document.getElementById('sv').disabled = true;
+
+    function ans() {
+
+        if (confirm("Do you want to change the value?") == true) {
+            var absent = document.getElementById('Absent').readOnly = true;
+            var calbtn = document.getElementById('on').disabled = true;
+            save = document.getElementById('sv').disabled = false;
+        } else {
+
+            location.reload(true);
+
+        }
+
+
+    }
+
+
+</script>

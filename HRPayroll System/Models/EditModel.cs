@@ -9,6 +9,7 @@
         public string EmployeeType { get; set; }
         public int Absences { get; set; }
         public float OverallTotal { get; set; }
+        public float RAbsences { get; set; }
 
     }
 }

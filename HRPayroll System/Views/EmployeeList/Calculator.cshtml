@@ -1,4 +1,4 @@
-﻿@model HRPayroll_System.Models.RegularModel
+﻿@model HRPayroll_System.Models.CalculatorModel
 
 @{
 }
@@ -6,8 +6,7 @@
 <h1> Regular Calculator </h1>
 
 
-
-<form class="row g-3" method="post" action="Calculator">
+<form id="Calcu" class="row g-3" method="post" action="Calculator">
 
     <div class="col-md-4">
         <label for="inputEmail3" class="col-sm-2 col-form-label"> ID </label>
@@ -35,24 +34,55 @@
         <input class="form-control" type="text" asp-for="EmployeeType" readonly />
     </div>
 
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-4 col-form-label"> Employee Type: </label>
+        <input class="form-control" type="number" asp-for="EmployeeType" readonly />
+    </div>
 
+    <div class="col-md-4">
+        <label for="inputEmail3" class="col-sm-4 col-form-label"><b> Overall Total: </b></label>
+        <input class="form-control" type="text" asp-for="OverallTotal" readonly />
+    </div>
 
     <div class="col-md-4">
         <label for="inputEmail3" class="col-sm-4 col-form-label"> Absences: </label>
-        <!-- Patter to 2decimal places w/o Js-->
-        <input class="form-control" type="text" inputmode="numeric" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="Absences" asp-for="Absences">
+        <input id="Absent" class="form-control" type="number" step="0.5" max="22" min="0" asp-for="RAbsences" inputmode="numeric" pattern="[-+]?[0-9]*[.,]?[0-9]+"/>
 
     </div>
 
+    
+    <button id="on" class="btn btn-info" onclick="ans()"> Calculate </button>
+   
+    <button id="sv" class="btn btn-info">Save</button>
+    
+
+</form><br /> <br/>
 
 
-    <div class="col-md-4">
-        <label for="inputEmail3" class="col-sm-4 col-form-label"> Overall Total: </label>
-        <input class="form-control" type="number" min="0" name="getting" asp-for="OverallTotal" readonly />
-    </div>
+<input class="btn btn-info" type="button" value="< Back" onclick="@("window.location.href='" + @Url.Action("List", "EmployeeList") + "'");" />
 
-    <button class="btn btn-info" name="click" value="submit"> Calculate </button> <!-- Clicke once and change database values-->
 
-</form> <br /> <br/>
 
-<input class="btn btn-primary" type="button" value="< Back" onclick="@("window.location.href='" + @Url.Action("List", "EmployeeList") + "'");" />
+<script>
+
+    var save = document.getElementById('sv').disabled = true;
+
+    function ans() {
+
+        if (confirm("Do you want to change the value?") == true) 
+        {
+            var absent = document.getElementById('Absent').readOnly = true;
+            var calbtn = document.getElementById('on').disabled = true;
+            save = document.getElementById('sv').disabled = false;
+        }else 
+        {   
+
+            location.reload(true);
+        
+        }
+        
+
+    }
+
+
+</script>

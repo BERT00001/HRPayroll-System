@@ -1,20 +1,21 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
 
+</head>
 
-<br /><br />
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/assets/images/background.jpg" alt="" class="img-fluid">
+        </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <img src="/assets/images/ebook2.png" alt="" class="img-fluid">
+        <div class="col-md-1 my-auto">
+            <input class="btn btn-primary btn-lg" type="button" value="Get Started" onclick="@("window.location.href='" + @Url.Action("List", "EmployeeList") + "'");" />
+        </div>
     </div>
 
-    <div class="col-md-3 my-auto">
-        <h3>WELCOME Admin!</h3>
-        <input class="btn btn-primary btn-lg" type="button" value="Get Started > " onclick="@("window.location.href='" + @Url.Action("List", "EmployeeList") + "'");" />
-    </div>
-</div>
-<div style="padding-buttom:100px; padding-right:150px;">
-   
-</div>
+
+</body>
+
+</html>

@@ -39,7 +39,7 @@
     <div class="row mb-3">
         <label for="inputEmail3" class="col-sm-2 col-form-label"> Overall Total: </label>
         <div class="col-sm-10">
-            <input class="form-control" type="number" asp-for="OverallTotal">
+            <input class="form-control" type="text" min="0" asp-for="OverallTotal">
         </div>
     </div>
 
@@ -54,12 +54,12 @@
             <input class="form-check-input" type="radio" value="Contractual"  asp-for="EmployeeType" >
             <label class="form-check-label" for="flexRadioDefault2">    Contractual Employee    </label>
     </div><br />
-       
+
+            <button asp-action="List" class="btn btn-info">Back</button>
             <button class="btn btn-primary"> Save </button>
-     
+
 
 </form>
-
     <!-- Slice Each number to 3 and maxnum for html is 15-->
     <script>
         
